@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TejMart - Online Grocery Shop</title>
+  <link href="index.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <i class="fas fa-store"></i> 
+    <h1>TejMart</h1>
+    <div class="cart-icon">🛒 Cart</div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#Grocery">Grocery</a>
+    <a href="#vegetables">Vegetables</a>
+    <a href="#fruits">Fruits</a>
+    <a href="#cold-drinks">Cold Drinks</a>
+    <a href="#snacks">Snacks</a>
+    <a href="#dairy">Dairy</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    
+  </nav>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search for groceries...">
+    <button onclick="searchProduct()">Search</button>
+  </div>
+  
+  <!-- Cart Modal -->
+  <div id="cart-modal" style="display: none; position: fixed; top: 80px; right: 30px; width: 300px; background: white; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 1000; max-height: 400px; overflow-y: auto; padding: 20px;">
+    <h3>Your Cart</h3>
+    <ul id="cart-items" style="list-style: none; padding: 0;"></ul>
+    <p id="cart-total" style="font-weight: bold;"></p>
+  </div>
+  
+  <div id="cart-popup" style="display: none; position: fixed; top: 70px; right: 30px; width: 300px; background: white; border: 1px solid #ccc; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000; padding: 15px;">
+  <h3>Your Cart</h3>
+  <ul id="cart-items" style="list-style: none; padding-left: 0;"></ul>
+  <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
+  <button onclick="checkout()" style="background-color: #28a745; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer;">Checkout</button>
+  </div>
+
+
+  <div id="search-results"></div>
+
+  <!-- Product Sections -->
+  <!-- Grocery -->
+
+  <h2 style="margin-left: 50px;" id="Grocery">Grocery</h2>
+  <div class="product-section">
+    <div class="product-card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU0cINSMy5M3Y8WvIF6uzfG3SFJ5cfBA9DFQ&s" alt="Rice bag">
+      <h3>Rice bag </h3>
+      <p>&#8377;400 / 5kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2022/4/KT/MS/JZ/148540348/1-litre-freedom-refined-sunflower-oil-1000x1000.png" alt="Sunflower oil">
+      <h3>Sunflower oil</h3>
+      <p>&#8377;150 / 900ml</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://3.imimg.com/data3/PJ/AA/MY-6842829/black-gram-whole-1000x1000.jpg" alt="Black gram">
+      <h3>Black gram</h3>
+      <p>&#8377;110 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/81VIi38z2xL.SL1500.jpg" alt="Red gram">
+      <h3>Red gram</h3>
+      <p>&#8377;90 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://5.imimg.com/data5/EW/EU/MY-31443385/8-500x500.jpg" alt="Ground nuts">
+      <h3>Ground nuts</h3>
+      <p>&#8377;120 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://aapkabazar.co/_next/image?url=https%3A%2F%2Fimage.aapkabazar.co%2Fproduct%2F831%2F1710831748273.png&w=3840&q=75" alt="Sugar">
+      <h3>Sugar</h3>
+      <p>&#8377;50 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/41M6oJpOyGL.jpg" alt="Salt">
+      <h3>Salt</h3>
+      <p>&#8377;20 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://shop.mtrfoods.com/cdn/shop/products/19-97-1-4068-AM01-01_MTR_USP2022_PURE_KASHMIRICHILLIPOWDER_POU_100g_R3_RL2_FOP_1000x1000.jpg?v=1655461272" alt="Chilli powder">
+      <h3>Chilli powder</h3>
+      <p>&#8377;40 / 100g</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://www.jiomart.com/images/product/original/rviobeny7v/nature-prime-organic-jaggery-cubes-250g-product-images-orviobeny7v-p600200773-2-202304060115.jpg?im=Resize=(1000,1000)" alt="Jaggery">
+      <h3>Jaggery</h3>
+      <p>&#8377;20 / 250g</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://www.gorevizon.com/wp-content/uploads/2021/06/moong-1.jpg" alt="Green moong dal">
+      <h3>Green moong dal</h3>
+      <p>&#8377;150 / 500g</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+     <div class="product-card">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2024/4/414531140/VY/NM/BV/183289323/n-95-mask.jpeg" alt="Maida">
+      <h3>Maida</h3>
+      <p>&#8377;25 / 500g</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://rukminim2.flixcart.com/image/704/844/kf8kvbk0/flour/g/z/q/2000-wheat-atta-2-whole-wheat-flour-srilalitha-original-imafvqpagw34d4yd.jpeg?q=90&crop=false" alt="Wheat flour">
+      <h3>Wheat flour</h3>
+      <p>&#8377;50 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/71P04TqkNeL.UF1000,1000_QL80.jpg" alt="Vermicelli">
+      <h3>Vermicelli</h3>
+      <p>&#8377;90 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://rukminim2.flixcart.com/image/704/844/l407mvk0/flour/h/x/m/2-premium-rice-rava-2-kg-4-rava-sri-lalitha-original-imagfy6fpjpzdzmf.jpeg?q=90&crop=false" alt="Rice ravva">
+      <h3>Rice ravva</h3>
+      <p>&#8377;50 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://www.freedomcart.com/image/cache/data/Products/Daily%20needs/freedomcart-lalitha-idly-raava-1kg-700x700.JPG" alt="Idly ravva">
+      <h3>Idly ravva</h3>
+      <p>&#8377;40 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+    
+    <div class="product-card">
+      <img src="https://www.srisritattva.com/cdn/shop/products/besan-gram-flour-front_642526ff-6207-482b-8542-4d5996f31678.jpg?v=1606908295" alt="Besan flour">
+      <h3>Besan flour</h3>
+      <p>&#8377;130 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Vegetables -->
+
+  <h2 style="margin-left: 20px;" id="vegetables">Fresh Vegetables</h2>
+  <div class="product-section">
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/3938343/pexels-photo-3938343.jpeg" alt="Tomatoes">
+      <h3>Tomatoes</h3>
+      <p>&#8377;30 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/2286776/pexels-photo-2286776.jpeg" alt="Potatoes">
+      <h3>Potatoes</h3>
+      <p>&#8377;20 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/20466259/pexels-photo-20466259.jpeg" alt="Drumstick">
+      <h3>Drumstick</h3>
+      <p>&#8377;30 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/33211281/pexels-photo-33211281.jpeg" alt="Cauliflower">
+      <h3>Cauliflower</h3>
+      <p>&#8377;35 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/2893635/pexels-photo-2893635.jpeg" alt="Capsicum">
+      <h3>Capsicum</h3>
+      <p>&#8377;40 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+  </div>
+
+  <!-- Fruits -->
+
+  <h2 style="margin-left: 20px;" id="fruits">Fruits</h2>
+  <div class="product-section">
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/209439/pexels-photo-209439.jpeg" alt="Apple">
+      <h3>Apple</h3>
+      <p>&#8377;100 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/2875814/pexels-photo-2875814.jpeg" alt="Banana">
+      <h3>Banana</h3>
+      <p>&#8377;40 / dozen</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/24277433/pexels-photo-24277433.jpeg" alt="Grapes">
+      <h3>Grapes</h3>
+      <p>&#8377;60 / kg</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/1178652/pexels-photo-1178652.jpeg" alt="Watermelon">
+      <h3>Watermelon</h3>
+      <p>&#8377;50 / each</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/6157056/pexels-photo-6157056.jpeg" alt="Pineapple">
+      <h3>Pineapple</h3>
+      <p>&#8377;60 / each</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Cold Drinks -->
+
+  <h2 style="margin-left: 20px;" id="cold-drinks">Cold Drinks</h2>
+  <div class="product-section">
+    
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/17650224/pexels-photo-17650224.jpeg" alt="Coca-Cola">
+      <h3>Coca-Cola</h3>
+      <p>&#8377;40 / bottle</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://images.pexels.com/photos/31332092/pexels-photo-31332092.jpeg" alt="Sprite">
+      <h3>Sprite</h3>
+      <p>&#8377;35 / bottle</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://5.imimg.com/data5/SZ/IH/PE/SELLER-49520187/thums-up-tin-500x500.jpg" alt="Thumbs Up">
+      <h3>Thumbs Up</h3>
+      <p>&#8377;40 / bottle</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://frivery.in/wp-content/uploads/2021/11/Amul-Kool-Koko-Chocolate-Milk-Tin-250ml.jpg" alt="Chocolate Milkshake">
+      <h3>Chocolate Milkshake</h3>
+      <p>&#8377;45 / bottle</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.Z-xxQERq300zzvmjjlQq5AHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Limca">
+      <h3>Limca</h3>
+      <p>&#8377;20 / bottle</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Snacks -->
+
+  <h2 style="margin-left: 20px;" id="snacks">Snacks</h2>
+  <div class="product-section">
+
+    <div class="product-card">
+      <img src="https://thumbs.dreamstime.com/z/lays-packet-potato-chips-isolated-white-background-94842615.jpg" alt="Lays">
+      <h3>Lays</h3>
+      <p>&#8377;20 / pack</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://apnafoodmarket.com/wp-content/uploads/2020/05/kurkure-masala.jpg" alt="Kurkure">
+      <h3>Kurkure</h3>
+      <p>&#8377;10 / pack</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://kiasumart.com/wp-content/uploads/2020/01/Copy-of-90004736F-scaled.jpg" alt="Good day biscuits">
+      <h3>Good day biscuits</h3>
+      <p>&#8377;20 / pack</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://tse2.mm.bing.net/th/id/OIP.4_fk3lxrJY0pOL1YwqyRNQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Britannia cake">
+      <h3>Britannia cake</h3>
+      <p>&#8377;40 / pack</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/71Oc2RWDHkL.SL1440.jpg" alt="Yippee">
+      <h3>Yippee</h3>
+      <p>&#8377;80 / pack</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://tse3.mm.bing.net/th/id/OIP.hFSSY3tURsL99_RrRx0wuQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Cup cakes">
+      <h3>Cup cakes</h3>
+      <p>&#8377;40 / pack</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+  </div>
+
+  <!-- Dairy -->
+
+  <h2 style="margin-left: 20px;" id="dairy">Dairy Products</h2>
+  <div class="product-section">
+
+    <div class="product-card">
+      <img src="https://cdn.shopify.com/s/files/1/0586/7303/7499/products/815V9EawbJL._SL1500.png?v=1655986659&width=1946" alt="Milk">
+      <h3>Milk</h3>
+      <p>&#8377;30 / 450ml</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://www.anikdairy.com/images/products/curd/cup/Anik-Curd_Cup-label_200g.jpg" alt="Curd">
+      <h3>Curd</h3>
+      <p>&#8377;40 / 500ml</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2024/7/438252412/XP/XI/YR/100237673/gulab-jamun-sweet-1000x1000.jpeg" alt="Ghee">
+      <h3>Ghee</h3>
+      <p>&#8377;200 / 250g</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2023/6/313205547/KR/DU/QL/45870248/1kg-fresh-paneer-1000x1000.jpg" alt="Panner">
+      <h3>Panner</h3>
+      <p>&#8377;250 / 500g</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://cdn.zeptonow.com/production/tr:w-250,ar-2000-2000,pr-true,f-auto,q-80/cms/product_variant/1c397b02-cf8e-48ba-bfed-1af877eba9dd.jpeg" alt="Badam milk">
+      <h3>Badam milk</h3>
+      <p>&#8377;30 / 200ml</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+
+    <div class="product-card">
+      <img src="https://5.imimg.com/data5/SELLER/Default/2024/7/438254705/JL/CP/DG/100237673/tm-170ml-1000x1000.jpeg" alt="Butter">
+      <h3>Butter</h3>
+      <p>&#8377;45 / 100g</p>
+      <button>Add to Cart</button>
+      <button>Buy Now</button>
+    </div>
+  </div>
+
+
+
+  <!-- About Us -->
+  <h2 id="about">About Us</h2>
+  <div style="padding: 0 30px 30px; font-size: 16px;">
+    <p><strong>TejMart</strong> is your one-stop online grocery store delivering groceries, fresh vegetables, fruits, snacks, dairy, and more directly to your door. Our mission is to make shopping simple, quick, and enjoyable while ensuring the highest quality standards for our customers.</p>
+  </div>
+
+  <!-- Contact -->
+  <h2 id="contact">Contact Us</h2>
+  <div style="padding: 0 30px 30px; font-size: 16px;">
+    <p><strong>TejMart</strong> mobile no: 9030085581</p>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 TejMart. All rights reserved.</p>
+  </footer>
+
+  <!-- Search Script -->
+  <script src="index.js"></script>
+</body>
+</html>
